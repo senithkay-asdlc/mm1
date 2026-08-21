@@ -1,8 +1,10 @@
-# Ballerina build output
-target/
-generated/
-Config.toml
+# Ballerina build output (expense-api)
+expense-api/target/
+expense-api/generated/
+expense-api/Config.toml
 
-# Node build output / dependencies
-node_modules/
-dist/
+# Node build output / dependencies (expense-webapp) — note: src/generated/
+# holds committed openapi-typescript output, not build output, so it is
+# NOT ignored here.
+expense-webapp/node_modules/
+expense-webapp/dist/
