@@ -24,11 +24,11 @@
     {
       "kind": "external",
       "name": "email-provider",
-      "description": "Sends transactional email on claim submission, approval, and rejection to employees and managers.",
-      "candidates": [
-        { "name": "sendgrid", "style": "rest-api" },
-        { "name": "resend", "style": "rest-api" },
-        { "name": "postmark", "style": "rest-api" }
+      "style": "sdk",
+      "package": "ballerina:ballerinax/sendgrid",
+      "description": "Sends transactional email via SendGrid on claim submission, approval, and rejection to employees and managers.",
+      "config": [
+        { "key": "SENDGRID_API_KEY", "secret": true, "description": "Your SendGrid API key, used to authenticate outbound email sends." }
       ]
     }
   ],
