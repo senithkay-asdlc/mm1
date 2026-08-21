@@ -29,26 +29,26 @@ processing.
 ## User Stories
 
 1. As an Employee, I want to submit an expense claim with amount, category,
- date, description, and a receipt attachment, so that I can request
- reimbursement for a business expense.
+date, description, and a receipt attachment, so that I can request
+reimbursement for a business expense.
 2. As an Employee, I want to see the status of my submitted claims (pending,
- approved, rejected), so that I know where each claim stands.
+approved, rejected), so that I know where each claim stands.
 3. As an Employee, I want to edit and resubmit a rejected claim, so that I can
- correct it without starting over.
+correct it without starting over.
 4. As an Employee, I want to receive an email when my claim is approved or
- rejected, so that I know the outcome without checking the app.
+rejected, so that I know the outcome without checking the app.
 5. As a Manager, I want to see a queue of pending claims from my employees, so
- that I can review them.
+that I can review them.
 6. As a Manager, I want to approve or reject a claim, so that valid expenses
- move toward reimbursement and invalid ones are sent back.
+move toward reimbursement and invalid ones are sent back.
 7. As a Manager, I want to receive an email when a new claim needs my review,
- so that approvals aren't delayed by having to check the app.
+so that approvals aren't delayed by having to check the app.
 8. As Finance, I want to see all approved claims, so that I know what is ready
- for payroll processing.
+for payroll processing.
 9. As Finance, I want to export approved claims as a file (e.g. CSV), so that
- I can upload them into our payroll system.
+I can upload them into our payroll system.
 10. As Finance, I want exported claims to be marked as exported, so that the
- same claim is never paid out twice.
+same claim is never paid out twice.
 
 ## Product Decisions
 
