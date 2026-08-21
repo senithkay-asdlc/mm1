@@ -1,0 +1,8 @@
+# Ballerina build output
+target/
+generated/
+Config.toml
+
+# Node build output / dependencies
+node_modules/
+dist/
