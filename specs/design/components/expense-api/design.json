@@ -12,13 +12,7 @@
       "kind": "platform-resource",
       "name": "expense-db",
       "resourceType": "postgres-cnpg",
-      "description": "Stores users (employee/manager/finance, manager relationships), expense claims, approval decisions, and payroll export batches."
-    },
-    {
-      "kind": "platform-resource",
-      "name": "expense-receipts",
-      "resourceType": "object-storage",
-      "description": "Stores uploaded receipt attachment files, one per expense claim, referenced by URL from the claim record."
+      "description": "Stores users (employee/manager/finance, manager relationships), expense claims (including the receipt file as a blob), approval decisions, and payroll export batches."
     },
     {
       "kind": "platform-resource",
