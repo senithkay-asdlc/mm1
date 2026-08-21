@@ -1,0 +1,43 @@
+{
+  "name": "expense-api",
+  "type": "service",
+  "version": "0.1.0",
+  "language": "Ballerina",
+  "buildpack": "docker",
+  "appPath": "expense-api",
+  "entrypoint": "deployment/service",
+  "exposure": "intranet",
+  "dependencies": [
+    {
+      "kind": "platform-resource",
+      "name": "expense-db",
+      "resourceType": "postgres-cnpg",
+      "description": "Stores users (employee/manager/finance, manager relationships), expense claims, approval decisions, and payroll export batches."
+    },
+    {
+      "kind": "platform-resource",
+      "name": "expense-receipts",
+      "resourceType": "object-storage",
+      "description": "Stores uploaded receipt attachment files, one per expense claim, referenced by URL from the claim record."
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "parameters": { "scopes": "openid profile email" },
+      "description": "Validates the caller's Thunder-issued token via the gateway and resolves their role (employee/manager/finance) and identity."
+    },
+    {
+      "kind": "external",
+      "name": "email-provider",
+      "description": "Sends transactional email on claim submission, approval, and rejection to employees and managers.",
+      "candidates": [
+        { "name": "sendgrid", "style": "rest-api" },
+        { "name": "resend", "style": "rest-api" },
+        { "name": "postmark", "style": "rest-api" }
+      ]
+    }
+  ],
+  "description": "Backend service owning the full expense-claim lifecycle: submission, editing/resubmission of rejected claims, manager approval/rejection, and finance's payroll export. Sends email notifications on status changes. Does not integrate directly with any payroll system — it only produces an export file for finance to hand off manually.",
+  "skillsPinned": ["openapi-conventions", "ballerina", "api-management", "thunder-authentication"]
+}

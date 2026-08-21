@@ -1,0 +1,26 @@
+{
+  "name": "expense-webapp",
+  "type": "web-application",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "buildpack": "docker",
+  "appPath": "expense-webapp",
+  "entrypoint": "deployment/web-application",
+  "exposure": "intranet",
+  "dependencies": [
+    {
+      "kind": "component",
+      "name": "expense-api",
+      "description": "Calls the Expense Claims API for all claim submission, approval, and payroll export operations."
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "parameters": { "scopes": "openid profile email" },
+      "description": "Thunder-issued OIDC client used for employee, manager, and finance sign-in via the browser."
+    }
+  ],
+  "description": "Single-page React app serving three role-scoped views: employees submit and track claims, managers review and act on a pending queue, and finance reviews approved claims and triggers payroll exports. Holds no data of its own — all state lives in expense-api.",
+  "skillsPinned": ["wireframes", "react-webapp", "thunder-authentication"]
+}
