@@ -7,20 +7,45 @@
   "appPath": "expense-webapp",
   "entrypoint": "deployment/web-application",
   "exposure": "intranet",
+  "description": "Single-page React app serving three role-scoped views: employees submit and track claims, managers review and act on a pending queue, and finance reviews approved claims and triggers payroll exports. Holds no data of its own — all state lives in expense-api.",
   "dependencies": [
     {
       "kind": "component",
       "name": "expense-api",
-      "description": "Calls the Expense Claims API for all claim submission, approval, and payroll export operations."
+      "description": "Calls the Expense Claims API for all claim submission, approval, and payroll export operations.",
+      "wiring": {
+        "endpoint": {
+          "component": "mm1-expense-api",
+          "name": "http",
+          "visibility": "project",
+          "envBindings": {
+            "address": "EXPENSE_API_URL"
+          }
+        }
+      }
     },
     {
       "kind": "platform-resource",
       "name": "user-auth",
+      "description": "Thunder-issued OIDC client used for employee, manager, and finance sign-in via the browser.",
       "resourceType": "thunder-app",
-      "parameters": { "scopes": "openid profile email" },
-      "description": "Thunder-issued OIDC client used for employee, manager, and finance sign-in via the browser."
+      "parameters": {
+        "scopes": "openid profile email"
+      },
+      "wiring": {
+        "ref": "mm1-user-auth",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
     }
   ],
-  "description": "Single-page React app serving three role-scoped views: employees submit and track claims, managers review and act on a pending queue, and finance reviews approved claims and triggers payroll exports. Holds no data of its own — all state lives in expense-api.",
-  "skillsPinned": ["wireframes", "react-webapp", "thunder-authentication"]
+  "skillsPinned": [
+    "wireframes",
+    "react-webapp",
+    "thunder-authentication"
+  ]
 }
